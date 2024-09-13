@@ -11,24 +11,31 @@ import Data from './Fetch';
 // Mostre a mensagem carregando... enquanto o fetch é realizado
 
 const App = () => {
-  const tablet = Data(
-    'https://ranekapi.origamid.dev/json/api/produto/tablet',
-  ).then((data) => {
-    return [
-      nome: data.nome,
-      id: data.id,
-    ]
-  });
+  const [dados, setDados] = React.useState(null);
+  const [carregando, setCarregant] = React.useState(null);
+  async function handleClick(event) {
+    setCarregant(true);
+    const response = await fetch(
+      `https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`,
+    );
+    const json = await response.json();
+    setDados(json);
+    setCarregant(false);
+  }
   return (
-    <>
-      <Produto
-        id={null}
-        nome={tablet.nome}
-        preco={null}
-        descricao={null}
-        situacao={null}
-      />
-    </>
+    <div>
+      <button style={{ margin: '5px' }} onClick={handleClick}>
+        notebook
+      </button>
+      <button style={{ margin: '5px' }} onClick={handleClick}>
+        smartphone
+      </button>
+      <button style={{ margin: '5px' }} onClick={handleClick}>
+        tablet
+      </button>
+      {carregando && <p>Carregando...</p>}
+      {!carregando && dados && <Produto dados={dados} />}
+    </div>
   );
 };
 
