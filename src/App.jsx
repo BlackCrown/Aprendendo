@@ -9,19 +9,31 @@ import Produto from './Produto';
 // Quando o usuário entrar no site, se existe um produto no localStorage, faça o fetch do mesmo
 
 const App = () => {
-  const [dados, setDados] = React.useState(null);
+  const [produto, setProduto] = React.useState(null);
+  React.useEffect(() => {
+    const produtoLocal = window.localStorage.getItem('produto');
+    if (produto !== 'null') {
+      setProduto(produtoLocal);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (produto !== 'null') {
+      window.localStorage.setItem('produto', produto);
+    }
+  }, [produto]);
 
   function handleClick(event) {
-    setDados(event.target.innerText);
-    if (dados) localStorage.setItem('produto', dados);
+    setProduto(event.target.innerText);
+    if (produto) localStorage.setItem('produto', produto);
   }
 
   return (
     <>
-      <h1>Preferência: {dados}</h1>
+      <h1>Preferência: {produto}</h1>
       <button onClick={handleClick}>notebook</button>
       <button onClick={handleClick}>smartphone</button>
-      <Produto link={dados} />
+      <Produto produto={produto} />
     </>
   );
 };
