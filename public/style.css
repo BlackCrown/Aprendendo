@@ -38,7 +38,7 @@ h2,
 h3,
 p,
 ul {
-  margin: 1rem 0;
+  margin: .8rem 0;
 }
 
 ul {
@@ -103,4 +103,25 @@ button:disabled {
 hr {
   border: 2px solid black;
   margin: 2rem auto;
+}
+
+img {
+  max-width: 50vw;
+  max-height: 50vw;
+}
+
+.card {
+  background-color: #b4b1ae;
+  padding: .8rem 1.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  transition: border .7s;
+}
+
+.card:hover{
+  background-color: #d1cfcd;
+  border-top: 9px solid black;
+  border-bottom: 9px solid black;
 }
