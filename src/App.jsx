@@ -1,20 +1,14 @@
 import React from 'react';
 import Produto from './Produto';
-import { GlobalStorage } from './GlobalContext';
 
-// Utilize o GlobalContext do exemplo anterior para puxar os dados da API abaixo:
-// https://ranekapi.origamid.dev/json/api/produto/
-// assim que o usuário acessar o app
-// coloque os dados da API no contexto global, dando acesso aos dados da mesma
-// defina uma função chamada limparDados que é responsável por zerar os dados de produto
-// e exponha essa função no contexto global
+// Otimize o código do slide anterior
+// Utilizando a array abaixo para mostrar
+// cada checkbox na tela.
+
+const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
 
 const App = () => {
-  return (
-    <GlobalStorage>
-      <Produto />
-    </GlobalStorage>
-  );
+  return <></>;
 };
 
 export default App;
