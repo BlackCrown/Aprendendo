@@ -1,33 +1,14 @@
 import React from 'react';
-import Produto from './Produto';
-
-// Otimize o código do slide anterior
-// Utilizando a array abaixo para mostrar
-// cada checkbox na tela.
+import Input from './Form/Input';
 
 const App = () => {
-  const [cores, setCores] = React.useState([]);
-  const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
-
-  function handleChange({ target }) {
-    if (cores.includes(target.value)) {
-      setCores(cores.filter((cor) => cor !== target.value));
-    } else {
-      setCores([...cores, target.value]);
-    }
-    console.log(cores);
-  }
+  const [nome, setNome] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   return (
     <>
-      <form>
-        {coresArray.map((cor) => (
-          <label key={cor}>
-            <input type="checkbox" value={cor} onChange={handleChange} />
-            {cor}
-          </label>
-        ))}
-      </form>
+      <Input id="nome" label="nome" value={nome} setValue={setNome} required />
+      <Input id="email" label="Email" value={email} setValue={setEmail} />
     </>
   );
 };
